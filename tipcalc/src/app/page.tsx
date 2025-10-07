@@ -7,23 +7,14 @@ import RightPanel from "./components/RightPanel";
 
 export default function Home() {
   
-  const [bill, setBill] = useState<string>("");
-  const [tipPercentage, setTipPercentage] = useState<number>(0);
-  const [numberOfPeople, setNumberOfPeople] = useState<string>(""); // Changed to string
+  const [bill, setBill] = useState("");
+  const [tipPercentage, setTipPercentage] = useState(0);
+  const [numberOfPeople, setNumberOfPeople] = useState("");
 
-  const calculateTipAmount = () => {
-    const billNumber = parseFloat(bill) || 0;
-    const peopleNumber = parseFloat(numberOfPeople) || 0; // Parse the string to number
-    if (peopleNumber === 0) return 0;
-    return (billNumber * (tipPercentage / 100)) / peopleNumber;
-  }
-
-  const totalPerPerson = () => {
-    const billNumber = parseFloat(bill) || 0;
-    const peopleNumber = parseFloat(numberOfPeople) || 0; // Parse the string to number
-    if (peopleNumber === 0) return 0;
-    return (billNumber / peopleNumber) + calculateTipAmount();
-  }
+const billNumber = parseFloat(bill) || 0;
+const peopleNumber = parseFloat(numberOfPeople) || 0;
+const tipAmountPerPerson = peopleNumber > 0 ? (billNumber * (tipPercentage / 100)) / peopleNumber : 0;
+const totalPerPerson = peopleNumber > 0 ? billNumber / peopleNumber + tipAmountPerPerson : 0;
 
   return (
     <main className="min-h-screen flex flex-col items-center justify-center font-bold font-mono bg-[hsl(185, 41%, 84%)] ">
@@ -50,8 +41,8 @@ export default function Home() {
 
         {/* Right Panel */}
         <RightPanel 
-          tipAmountPerPerson={calculateTipAmount()}
-          totalPerPerson={totalPerPerson()}
+          tipAmountPerPerson={tipAmountPerPerson}
+          totalPerPerson={totalPerPerson}
           reset={() => {
             setBill('');
             setTipPercentage(0);
