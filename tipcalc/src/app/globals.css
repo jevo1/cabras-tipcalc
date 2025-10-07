@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&display=swap"); */
 
 /* Import Tailwind (v4 only needs this) */
 @import "tailwindcss";
@@ -7,7 +7,7 @@
 /* Base styles */
 @layer base {
   body {
-    font-family: "Space Mono", monospace;
+    font-family: 'Space Mono', monospace;
     background-color: hsl(185, 41%, 84%); /* Grey 200 from style guide */
     color: hsl(183, 100%, 15%); /* Green 900 */
   }
@@ -18,4 +18,21 @@
   .text-balance {
     text-wrap: balance;
   }
+}
+
+label, input,
+button {
+  font-family: 'Space Mono', monospace;
+  font-weight: 700;
+  font-size: 24px;
+}
+
+p{
+  font-family: 'Space Mono', monospace;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }

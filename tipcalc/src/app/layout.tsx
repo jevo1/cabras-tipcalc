@@ -6,14 +6,13 @@ export const metadata: Metadata = {
   description: "Frontend Mentor Tip Calculator App",
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className="font-[Space Mono] bg-[hsl(185,41%,84%)]">
+      <head>
+        <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+      </head>
+      <body>
         {children}
       </body>
     </html>
