@@ -1,8 +1,25 @@
+"use client";
+
+import { useState } from "react";
 import Image from "next/image";
 import LeftPanel from "./components/LeftPanel";
 import RightPanel from "./components/RightPanel";
 
 export default function Home() {
+  
+  const [bill, setBill] = useState<number>(0);
+  const [tipPercentage, setTipPercentage] = useState<number>(0);
+  const [numberOfPeople, setNumberOfPeople] = useState<number>(1);
+
+  const calculateTipAmount = () => {
+    if (numberOfPeople === 0) return 0;
+    return (bill * (tipPercentage / 100)) / numberOfPeople;
+  }
+  const totalPerPerson = () => {
+    if (numberOfPeople === 0) return 0;
+    return (bill / numberOfPeople) + calculateTipAmount();
+  }
+
   return (
     <main className="min-h-screen flex flex-col items-center justify-center font-mono bg-[hsl(172, 67%, 45%)] ">
       {/* Logo */}
