@@ -21,7 +21,7 @@ export default function Home() {
   }
 
   return (
-    <main className="min-h-screen flex flex-col items-center justify-center font-mono bg-[hsl(172, 67%, 45%)] ">
+    <main className="min-h-screen flex flex-col items-center justify-center font-mono bg-[hsl(172,67%,45%)] ">
       {/* Logo */}
       <Image
         src="/logo.svg"
@@ -34,7 +34,14 @@ export default function Home() {
       {/* Container */}
       <div className="bg-white rounded-2xl shadow-lg p-6 md:p-10 flex flex-col md:flex-row max-w-4xl w-full">
         {/* Left Panel */}
-        <LeftPanel />
+        <LeftPanel
+          bill={bill}
+          setBill={setBill}
+          tipPercentage={tipPercentage}
+          setTipPercentage={setTipPercentage}
+          numberOfPeople={numberOfPeople}
+          setNumberOfPeople={setNumberOfPeople}
+        />
 
         {/* Right Panel */}
         <RightPanel />
